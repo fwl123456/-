@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'https://gems.ruby-china.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.1'
@@ -48,3 +48,16 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'mongoid'
+gem 'mongoid_search'
+gem 'kaminari'
+gem 'kaminari-mongoid'
+# 后台任务
+gem 'sidekiq'
+gem 'redis'
+gem "sidekiq-cron"
+# REST HTTP 客户端
+gem 'rest-client'
+# 分页插件
+gem 'kaminari'
+gem 'kaminari-mongoid'
