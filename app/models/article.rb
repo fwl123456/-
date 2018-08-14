@@ -4,7 +4,7 @@ class Article
   include Mongoid::Timestamps
   include Mongoid::Search
 
-  field :title, type: String # 文章名称
+  field :title, type: String # 文章标题
   field :content, type: String # 文章内容
   field :url, type: String # 文章链接地址
   field :desc, type: String # 文章描述
@@ -14,7 +14,7 @@ class Article
   field :status, type: Integer # 文章状态 -1 监控完成 0 未监控 1 监控中
   field :release_at, type: Time # 文章发布时间
   field :collect_rate, type: Integer, default: 2 # 文章监控频率，默认一小时2次
-  field :collect_count, type: Integer # 监控次数
+  field :collect_count, type: Integer, default: 0 # 监控次数
   field :end_at, type: Date # 文章监控结束日期
   search_in :title, :author, :status
   belongs_to :wx_public
