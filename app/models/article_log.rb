@@ -8,4 +8,5 @@ class ArticleLog
   field :ref_date, type: String # 当前数据的日期
   field :view_count, type: Integer # 总浏览量
   belongs_to :article
+  belongs_to :wx_public
 end
