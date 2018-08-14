@@ -4,5 +4,5 @@ json.wx_publics @wx_publics do |wx_public|
   json.desc wx_public.desc
   json.create_at wx_public.created_at.strftime("%F %T")
 end
-json.total_count @wx_publics.total_count
+json.total @wx_publics.total_count
 json.current_page @wx_publics.current_page
