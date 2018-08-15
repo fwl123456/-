@@ -6,7 +6,10 @@ class WxPublic
 
   field :name, type: String # 微信公众号名称
   field :desc, type: String # 微信公众号描述
-
+  field :collect_count, type: Integer, default: 1 # 公众号文章默认采集条数
+  field :monitoring_rate, type: Integer, default: 2 # 文章监控频率，默认一小时2次
+  field :monitoring_count, type: Integer, default: 0 # 监控次数
+  field :end_at, type: Date # 监控结束日期
   has_many :articles
   search_in :name
 end

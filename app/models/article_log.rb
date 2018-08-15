@@ -9,4 +9,5 @@ class ArticleLog
   field :view_count, type: Integer # 总浏览量
   belongs_to :article
   belongs_to :wx_public
+  belongs_to :phone
 end

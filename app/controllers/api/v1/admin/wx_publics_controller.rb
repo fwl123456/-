@@ -39,7 +39,7 @@ class Api::V1::Admin::WxPublicsController < Api::V1::Admin::BaseController
   end
   
   def wx_public_params
-    params.require(:wx_public).permit(:name, :desc)
+    params.require(:wx_public).permit(:name, :desc, :collect_count, :monitoring_rate, :monitoring_count, :end_at)
   end
   
 end
