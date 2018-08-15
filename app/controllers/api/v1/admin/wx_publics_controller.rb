@@ -1,7 +1,9 @@
 class Api::V1::Admin::WxPublicsController < Api::V1::Admin::BaseController
   before_action :set_wx_public, only: [:show, :update, :destroy]
   def index
-    @wx_publics = WxPublic.all.page(params[:page])
+    @wx_publics = WxPublic.all
+    @wx_publics = @wx_publics.full_text_search(params[:search]) unless params[:search].blank?s
+    @wx_publics = @wx_publics.page(params[:page])
   end
 
   def show
