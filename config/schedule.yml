@@ -1,0 +1,4 @@
+hard_test_job:
+  cron: "0 */5 * * * ?" # 每隔5分钟执行一次
+  class: "HardWorker"
+  queue: default

@@ -18,7 +18,6 @@ class Api::V1::ArticleLogsController < Api::V1::BaseController
     @article_log = @article.article_logs.new(article_log_params.merge(phone: @phone, wx_public: @article.wx_public))
     if @article_log.save
       @article_log.update(view_count: @article_log.new_view_count + @article.view_count)
-      puts "——+——+——+——+——+——+——+#{@article_log.new_view_count + @article.view_count}"
       render json: { status: 1, notice: "创建成功", id: @article_log.id.to_s }
     else
       render json: { status: -1, notice: "创建失败", error_msg: @article_log.errors.full_messages }
