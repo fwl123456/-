@@ -1,8 +1,9 @@
 class Api::V1::Admin::WxPublicsController < Api::V1::Admin::BaseController
-  before_action :set_wx_public, only: [:show, :update, :destroy]
+  before_action :set_wx_public, only: [:show, :update, :destroy, :active]
   def index
     @wx_publics = WxPublic.all
-    @wx_publics = @wx_publics.full_text_search(params[:search]) unless params[:search].blank?s
+    @wx_publics = @wx_publics.where(active: params[:active]) unless params[:active].blank?
+    @wx_publics = @wx_publics.full_text_search(params[:search]) unless params[:search].blank?
     @wx_publics = @wx_publics.page(params[:page])
   end
 
@@ -34,6 +35,19 @@ class Api::V1::Admin::WxPublicsController < Api::V1::Admin::BaseController
     result = @wx_public.destroy
     render json: { status: 1, notice: "删除成功！"}
   end
+  
+  def active
+    if params[:active] == 'open'
+      @wx_public.update(active: true)
+      render json: { status: 1, notice: "开启监控成功！" }
+    elsif params[:active] == 'close'
+      @wx_public.update(active: false)
+      render json: { status: 1, notice: "关闭监控成功！" }
+    else
+      render json: { status: -1, notice: "错误！" }
+    end
+  end
+  
 
   private
   def set_wx_public

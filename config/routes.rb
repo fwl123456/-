@@ -7,6 +7,9 @@ Rails.application.routes.draw do
       namespace :admin do
         resources :phones, only:[:index, :show]
         resources :wx_publics, only:[:index, :show, :create, :update, :destroy] do
+          member do
+            put 'active'
+          end
           resources :articles, only:[:index, :show] do
             resources :article_logs, only:[:index, :show]
           end
